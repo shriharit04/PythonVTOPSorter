@@ -54,29 +54,6 @@ def AddNewSubjectsFolder(SubjectCode,SubjectName):  # 2.0 -> Reads from csv stor
                 os.mkdir(subject[1] + r'/Reference books')
 
 
-def FileMoverBackup1():  # Moves files
-    import os, shutil,re
-    from VtopDownloader import directories
-    os.chdir("G:/My Drive/VIT/Temp material")
-    NotesDirectory = "G:/My Drive/VIT"
-    print(os.getcwd())
-    pattern = "_+[a-zA-Z0-9]+_"
-    for file in os.listdir():
-        folder = (re.findall(pattern, file)[0][1:-1])
-        if folder in directories:
-            shutil.move(os.getcwd() + "\\" + file, NotesDirectory + "\\" + directories[folder] + "\\reference material")
-
-
-def CSVFileCreator(file="Subject.csv"):
-    import csv
-    file = open(file, "w", newline="")
-    global directories
-    writer = csv.writer(file)
-    writer.writerow(["Subject Code", "Subject name", "Class code"])  # todo : should update class code
-    for i in directories.keys():
-        writer.writerow([i, directories[i]])
-    file.close()
-
 
 def FileMoverMain():
     import re, os, shutil
@@ -90,7 +67,6 @@ def FileMoverMain():
 
 def FolderFileRename():
     #Renames file name in by proper date and order
-
     PatternRename = "\d\d-\d\d-\d\d\d\d"
     PatternOrder = "_Reference_Material_+[a-zA-Z]+_"
     Subject_code = eval("r'" + input(
