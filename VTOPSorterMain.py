@@ -13,18 +13,15 @@ begin = time.time()
 
 
 #function evaluator
-'''while True:
-    eval(FuncDict[int(input("->"))]+"()")'''
-
-#function testing
-FileMerger()
-
+while True:
+    eval(FuncDict[int(input("->"))]+"()")
 
 # store end time
-end = time.time()
 
-print(end-begin)
+
+
 #todo:run as bg service, auto check and download using selenium
+#todo: extensions
 #todo: store semester archive
 #todo: autorun prg
 #todo: Can you make PDF merger more efficient?
