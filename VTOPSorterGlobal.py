@@ -110,12 +110,13 @@ def FolderFileRename():
 def FileMerger():
     import re
     from datetime import date
-    Subject = directories["BPHY101L_TH"]  # directories[input("-> Enter Subject Code : ")]
-    StartDate = date(2022, 11, 11)  # list(map(int,input("-> Enter Start Date DD-MM -YYYY: ").split('-')))
-    # StartDate = date(StartDate[2],StartDate[1],StartDate[0])
-    EndDate = date(2022, 12, 12)  # list(map(int,input(input("-> Enter End Date DD-MM -YYYY: ").split('-'))))
-    # EndDate = date(EndDate[2],EndDate[1],EndDate[0])
+    Subject =  directories[input("-> Enter Subject Code : ")]
+    StartDate = list(map(int,input("-> Enter Start Date DD-MM-YYYY: ").split('-')))
+    StartDate = date(StartDate[2],StartDate[1],StartDate[0])
+    EndDate =  list(map(int,input("-> Enter End Date DD-MM-YYYY: ").split('-')))
+    EndDate = date(EndDate[2],EndDate[1],EndDate[0])
     os.chdir(NotesDir+Subject)
+    #print(os.getcwd())
     ReqFiles = []
     date_pattern = "^\d+-\d+-\d+\s*"  # pattern for getting date
     for file in os.listdir():
@@ -124,7 +125,7 @@ def FileMerger():
             continue
         Date = list(map(int, (Date.group().strip().split("-"))))
         Date = date(Date[0], Date[1], Date[2])
-        if StartDate < Date < EndDate:
+        if StartDate <= Date <= EndDate:
             print(file)
             ReqFiles.append(file)
 

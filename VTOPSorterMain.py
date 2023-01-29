@@ -14,6 +14,8 @@ begin = time.time()
 
 #function evaluator
 while True:
+    #eval(FuncDict[5]+"()")
+
     eval(FuncDict[int(input("->"))]+"()")
 
 # store end time
